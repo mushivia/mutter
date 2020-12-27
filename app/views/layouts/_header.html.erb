@@ -1,10 +1,16 @@
+<header>
 <% if user_signed_in? %><!--ログイン検証-->
     <!--ログインしてる画面-->
+    <li style="list-style: none;">
     <%= link_to "Mutter",root_path %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
 <% else %>
     <!--ログインしていないとき-->
+    <li style="list-style: none;">
     <%= link_to "Mutter",root_path %>
     <%= link_to "ログイン",new_user_session_path %>
     <%= link_to "新規登録",new_user_registration_path %>
+    </li>
 <% end %>
+</header>

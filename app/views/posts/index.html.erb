@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>みんなの投稿</h1>
+
+    <% @posts.each do |post| %>
+      <div id="name">
+        <%= post.user.name %>
+      </div>
+      
+      <div id="content">
+        <%= post.content %>
+        <br>
+        <ul><%= l post.created_at, format: :short %></ul>
+      </div>
+      <% if user_signed_in? && post.user.id == current_user.id %> 
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% end %>
+
+<br>
+<%= link_to 'New Post', new_post_path %>
